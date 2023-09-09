@@ -1,0 +1,65 @@
+<!-- SNIPPET MULTI-TOUCH POINTER_CAPTURE -->
+<!-- SUN 07-MAY-23 -->
+
+
+<!DOCTYPE html>
+<html lang="en" id="app">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="Stylesheet" type="text/css" href="./multitouch_gestures.css" />
+	<script src="./multitouch_gestures.js" defer></script>
+	<script src="./multitouch_gesturesrecognizer.js" defer></script>
+	<title>MULTITOUCH GESTURES // recognize 2-finger swipe/pinch/zoom</title>
+
+</head>
+	<body id="touchpointhook">
+
+		<div id="wrapper">
+
+			<div class="loggrid" id="grid">
+<!-- HEADER -->
+				<div class="log">ID</div>
+				<div class="log">START</div>
+				<div class="log">MOVE</div>
+				<div class="log">END</div>
+				<div class="log">CANCEL</div>
+				<div class="log">POS</div>
+<!-- FIRST TOUCH -->
+				<div id="id0" class="log">0</div>
+				<div id="start0" class="bull">&nbsp;•</div>
+				<div id="move0" class="bull">&nbsp;•</div>
+				<div id="end0" class="bull">&nbsp;•</div>
+				<div id="cancel0" class="bull">&nbsp;•</div>
+				<div id="pos0" class="log">0 0</div>
+<!-- SECOND TOUCH -->
+				<div id="id1" class="log">1</div>
+				<div id="start1" class="bull">&nbsp;•</div>
+				<div id="move1" class="bull">&nbsp;•</div>
+				<div id="end1" class="bull">&nbsp;•</div>
+				<div id="cancel1" class="bull">&nbsp;•</div>
+				<div id="pos1" class="log"></div>
+<!-- THIRD TOUCH -->
+				<div id="id2" class="log">2</div>
+				<div id="start2" class="bull">&nbsp;•</div>
+				<div id="move2" class="bull">&nbsp;•</div>
+				<div id="end2" class="bull">&nbsp;•</div>
+				<div id="cancel2" class="bull">&nbsp;•</div>
+				<div id="pos2" class="log"></div>
+			</div>
+<!-- INTERPRET GESTURE -->
+			<div class="message">
+				<span id="datelog" class="log">
+					DATE
+				</span>
+				<br>
+				<span id="gesturelog" class="log">
+					GESTURE
+				</span>
+			</div>
+
+		</div
+
+	</body>
+</html>
+

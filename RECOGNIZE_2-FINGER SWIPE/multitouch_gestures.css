@@ -1,0 +1,94 @@
+/* SUN 07-MAY-23 */
+
+
+body {
+	padding: 0;
+	margin: 0;
+	touch-action: none; 
+	user-select: none;
+	overflow: hidden;
+}
+
+#wrapper {
+	width: 100vw;
+	height: 100vh;
+	background: rgb(240, 255, 255, 1);
+	border: 0px dashed blue;
+	overflow: hidden;
+}
+
+
+div#slider {
+	width: 140px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgb(255, 200, 255, 1);
+}
+
+.loggrid {
+	padding: 0 0 0 10px;
+	display: grid;
+	grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1.5fr;
+
+	width: 95%;	
+	position: absolute;
+	top: 50%;
+	border: 0px solid yellow;
+}
+
+.message {
+	position: absolute;
+	bottom: 0%;
+	padding: 0 0 20px 10px;
+	width: 95%;
+	border: 0px solid yellow;
+}
+
+.log {
+	padding: 5px 0 5px 0;
+	font-family: "Menlo", sans-serif, system-UI;
+	font-size: 12px;
+	line-height: 20px;
+	border: 0px dashed blue;
+}
+
+.bull {
+	padding: 5px 0 5px 0;
+	font-family: "Menlo", sans-serif, system-UI;
+	font-size: 25px;
+	line-height: 20px;
+	border: 0px dashed blue;
+}
+
+
+
+																					/* RIPPLE */
+
+.TPcircle {
+	position: absolute;
+	background-color: rgba(50 150 255 / 1);
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	animation: ripple 50ms forwards;
+	pointer-events: none;
+	touch-action: none;
+}
+
+
+@keyframes ripple {
+	from {
+		width: 50px;
+    height: 50px;
+    opacity: .25;
+  }
+  to {
+    width: 120px;
+    height: 120px;
+    opacity: .75;
+  }
+}
+
+
+
