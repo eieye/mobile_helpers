@@ -1,0 +1,53 @@
+/** (PART OF) CUSTOM SHAKE_EVENT "MOZ SLIDERS FLASH" // MON 25-APR-22 */
+
+	:root {
+		/* TRACK AND THUMB */
+		--slidetrackcol: rgba(0 0 0 / .35);
+		--slideprocol:   rgba(0 255 200 / 1); /* MINT */
+	}
+	html {
+		font-family: system-ui;
+		font-weight: 400;
+		font-size: 3vh;
+		color: rgba(130 130 130 / 1);
+	}
+	body {
+		margin: 0;
+		padding: 0;
+	}
+																				/** WRAPPER */
+/** ________________________________________________________________________________________ */
+/** FLEX VERTICAL */
+	#pagewrapper {
+		display: flex;
+		flex-direction: column;
+ 	 	height: 100vh;
+ 	 	width: 100vw;
+		border: 0px dashed red;
+	}
+
+																/** RANGE-INPUTS (SLIDERS) */
+/** ________________________________________________________________________________________ */
+	#sliderthreshold {
+		width: 100vw;
+		height: 12vh;
+		background-color: rgba(0 0 0 / .5);
+	}
+	#slidertimeout {
+		width: 100vw;
+		height: 12vh;
+		padding-bottom: 1vh;
+		background-color: rgba(0 0 0 / .5);
+	}
+/** SLIDER-LABEL "INPUT[TYPE=TEXT]" IN "SLIDER_CSS" */
+	#flashel {
+		width: 100vw;
+		height: 55vh;
+		background-color: rgba(0 0 0 / .2);
+	}
+	#creditsel {
+		width: 100vw;
+		height: 20vh;
+		background-color: rgba(255 255 0 / .2);
+	}
+

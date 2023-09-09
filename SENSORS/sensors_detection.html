@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>DEVICE_MOTION/ORIENTATION // SENSORS TESTBED</title>
+
+<script type="text/javascript">
+
+function motion(event) {
+// RAW ACC SENSOR DATA
+	let aigx = event.accelerationIncludingGravity.x;
+	let aigy = event.accelerationIncludingGravity.y;
+	let aigz = event.accelerationIncludingGravity.z;
+  document.getElementById("accelig").innerHTML =
+		"Acceleration including Gravity<br>" +
+		"x " + aigx.toPrecision(2) + "<br>" +
+		"y " + aigy.toPrecision(2) + "<br>" +
+		"z " + aigz.toPrecision(2);
+// SUBTRACTED ACC DATA
+	let ax = event.acceleration.x;
+	let ay = event.acceleration.y;
+	let az = event.acceleration.z;
+  document.getElementById("accel").innerHTML =
+		"Acceleration<br>" +
+		"x " + ax.toPrecision(2) + "<br>" +
+		"y " + ay.toPrecision(2) + "<br>" +
+		"z " + az.toPrecision(2);
+}
+
+
+function orientation(event) {
+	let oa = event.alpha;
+	let ob = event.beta;
+	let og = event.gamma;
+  document.getElementById("gyro").innerHTML =
+		"Orientation<br>" +
+		"a " + oa.toPrecision(2) + "<br>" +
+		"b " + ob.toPrecision(2) + "<br>" +
+		"g " + og.toPrecision(2);
+}
+
+
+function wireup() {
+  if (window.DeviceMotionEvent){
+    window.addEventListener("devicemotion", motion, false);
+  } else {
+    var status = document.getElementById("status");
+    status.innerHTML = status.innerHTML.replace(
+      "is supported", "is not supported"
+    );
+  }
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", orientation, false);
+  } else {
+    var status = document.getElementById("status");
+    status.innerHTML = status.innerHTML.replace(
+      "is supported", "is not supported"
+    );
+  }
+}
+
+</script>
+
+
+<style>
+	html {
+		font-family: system-ui;
+		font-weight: 400;
+		font-size: 3vh;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	#container {
+		display: flex;
+		flex-direction: column;
+ 	 	height: 100vh;
+ 	 	width: 100vw;
+		border: 0px dashed red;
+	}
+	#status {
+		width: 100vw;
+		height: 25vh;
+		background-color: rgba(255 255 0 / .2);
+		border: 0px dashed blue;
+	}
+	#accel {
+		width: 100vw;
+		height: 25vh;
+		background-color: rgba(255 0 0 / .2);
+	}
+	#accelig {
+		width: 100vw;
+		height: 25vh;
+		background-color: rgba(0 255 0 / .2);
+	}
+	#gyro {
+		width: 100vw;
+		height: 25vh;
+		background-color: rgba(0 255 255 / .2);
+	}
+</style>
+
+
+</head>
+<body onload="wireup();">
+
+<div id="container">
+<div id="status"><a href=\"http://www.w3.org/TR/orientation-event/">http://www.w3.org/TR/orientation-event/</a> is supported.</div>
+<div id="accel">Acceleration<br>x<br>y<br>z</div>
+<div id="accelig">Acceleration including Gravity<br>x<br>y<br>z</div>
+<div id="gyro">Orientation<br>a<br>b<br>g</div>
+</div>
+
+</body>
+</html>

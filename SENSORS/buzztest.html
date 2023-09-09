@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BUZZ TESTBED // KEEP UPDATED FOR PERMISSIONS-API // FRI 29-APR-22</title>
+<link rel="stylesheet" href="./buzztest.css">
+</head>
+<body>
+
+
+																					 <!-- PAGE -->
+<!-- ________________________________________________________________________________________ -->
+<!-- WRAPPER (CENTER ELEMENTS) -->
+<div class="page_wrapper">
+		<!-- MAIN CONTENT LAYER -->
+</div>
+<!-- END PAGE_WRAPPER -->
+
+																				<!-- OVERLAY -->
+<!-- ________________________________________________________________________________________ -->
+<!-- DIMMER // INIT VISIBLE -->
+<div id="overlay" class="overlay">
+
+<!-- CONTENT ALERT-BOX -->
+	<div class="alertbox" id="alertbox">
+		<span id="flashtxt">press "buzz"-button to buzz buzzer</span>
+
+<!-- BTN -->
+	<div class="btncontainer inalert">
+		<!-- <div class="btn gray">CANCEL</div> -->
+		<div id="OK" class="btn">BUZZ</div>
+	</div>
+
+
+
+
+
+
+	</div>
+<!-- END CONTENT ALERT-BOX -->
+
+</div>
+<!-- END DIMMER -->
+
+
+
+
+
+																				<!-- SCRIPTS -->
+<!-- ________________________________________________________________________________________ -->
+<script>
+
+var HAS_TAPPED = false;
+var flashel = document.getElementById('alertbox');
+var flashtxt = document.getElementById('flashtxt');
+
+// MOZ "EXPERIMENTAL" // NOT SAFARI
+// https://w3c.github.io/permissions/#query-method
+/*
+navigator.permissions.query({name:'vibrate'}).then(function(result) {
+  if (result.state === 'granted') {
+    console.log("MAKE IT SO");
+  } else if (result.state === 'prompt') {
+    alert("PLEASE GIVE PERMISSION TO VIBRATE");
+  }
+  // Don't do anything if the permission was denied.
+});
+*/
+
+
+
+	function vibe() {
+		HAS_TAPPED = true;
+	// __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __
+																							// VIBRATE
+// CHROME
+		if (navigator.userAgent.includes("Chrome")) {
+			navigator.vibrate(400);
+			// (TEXT MSG WRITE)
+			/* txtel.innerHTML = `<span style='color: red;'>NOTHING LEFT TO DELETE (CHROME)</span>`; */
+																		console.log("CHROME BUZZ");
+																		console.log("HAS_TAPPED", HAS_TAPPED);
+		} else {
+// FIREFOX // TRY VENDOR-PREFIXED
+// (SEEMS ABANDONED // NO MENTION ON MDN)
+			if (navigator.mozVibrate) {
+			navigator.mozVibrate(400);
+																		console.log("MOZ-VIBE");
+																		console.log("HAS_TAPPED", HAS_TAPPED);
+			}
+// FIREFOX // RETURNS TRUE BUT DOES NOT EXECUTE VIBE
+// (PROBABLY RELATED TO (PENDING) PERMISSIONS API)
+			if (navigator.vibrate) {
+				navigator.vibrate(400);
+																		console.log("FIFO VIBE");
+																		console.log("HAS_TAPPED", HAS_TAPPED);
+			}
+// SUBSTITUTE WITH VISUAL ALERT
+																							// FLASH
+			// (TEXT MSG WRITE)
+			flashtxt.innerHTML = `sorry, no buzzer (Firefox)`;
+			flashel.style.backgroundColor = "rgba(255 255 0 / 1)";
+																							// UNFLASH
+			setTimeout(() => {
+				// (TEXT MSG REMOVE)
+				flashtxt.innerHTML = `press "buzz"-button to buzz buzzer`;
+				flashel.style.backgroundColor = "rgba(255 255 255 / .95)";
+			}, 1500)
+		}
+	// __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __
+	}
+
+
+// EVENT_LISTENER FOR INITIAL USER-TAP
+// (CHROME WILL NOT TAKE TOUCH_START/END FOR A "CLICK")
+	document.getElementById('OK').addEventListener('click', vibe);
+
+
+
+// (BUZZ FOR NOTIFICATION) // SAMESAME (DISFUNCTIONAL) IN FIFO
+/**
+	var options = {
+ 	 body: 'notification text',
+ 	 vibrate: 200
+	}
+
+	var n = new Notification('Test notification',options);
+	console.log(n.vibrate) // should log [200,100,200]
+*/
+
+
+</script>
+
+
+</body>
+</html>

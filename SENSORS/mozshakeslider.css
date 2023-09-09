@@ -1,0 +1,115 @@
+/** (PART OF) CUSTOM SHAKE_EVENT "MOZ SLIDERS FLASH" // MON 25-APR-22 */
+/* ### TBD ### */
+		/* SAFARI/CHROME WEBKIT WILL NOT SHOW RANGE-BAR ("PROGRESS"-BAR) ONLY "THUMB"-DOT */
+
+
+
+
+
+
+
+/** ________________________________________________________________________________________ */
+/* CUSTOM STYLING SLIDER */
+
+input[type="range"] {
+  -webkit-appearance: none; 						/* USE NO DEFAULTS */
+  background: transparent;
+  width: 90vw;
+  outline: none;
+  padding: 25px 0 0 25px; /* TRBL */
+  margin: 0;												/* MOZ UNDO MARGIN */
+}
+
+input[type="range"]:focus,
+input[type="range"]:active,
+input[type="range"]::-moz-focus-inner,
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+  outline: none;
+}
+
+
+
+
+/** ________________________________________________________________________________________ */
+/* SLIDER MOZ */
+
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  height: 0px; /*40px*/    									/* ### TBD ### // MIN VAL SHOW STRETCHED OVAL */
+  width: 0px;
+  		/* USE THUMB-WIDTH NOT PROGRESS TO DISPLAY CURRENT RANGE(!?) */
+  border-radius: 50%;
+  background: var(--slideprocol);
+}
+
+
+input[type="range"]::-moz-range-track {
+  width: 90vw;
+  height: 30px;
+  background: var(--slidetrackcol);
+  border-radius: 15px; /* CAPS ONLY */
+	cursor: pointer; /** (POINTER B/C TRACK IS CLICKABLE) */
+}
+
+
+input[type="range"]::-moz-range-progress {
+  height: 30px;
+  background: var(--slideprocol);
+  border-radius: 15px; /* CAPS ONLY */
+  cursor: pointer;
+}
+
+
+																	/* SLIDER-LABEL (TEXT) MOZ */
+/** ________________________________________________________________________________________ */
+
+								/* ### TBD ### TEST // INVALID */
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="text"]::-moz-focus-inner,
+input[type="text"]::-moz-focus-outer {
+  border: 0px;
+  outline: none;
+}
+
+
+input[type="text"] {
+	font-size: 2.7vh; 																									/** ELESE WOULD DEFAULT TO S.TH. LIKE 5PX */
+  padding: 0; /* MOZ */
+  margin: 0; /* TRBL */
+  box-sizing: content;
+  border: 1px solid transparent; /* KEEP BORDER FOR BASELINE SHIFT */
+  border-radius: 2px;
+	background-color: transparent;
+  color: var(--slideprocol);
+}
+
+
+
+
+/** ________________________________________________________________________________________ */
+/* SLIDER WEBKIT */
+
+
+input[type="range"]::-webkit-slider-thumb {
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: var(--slideprocol); /* SAME AS MOZ-RANGE-PROGRESS*/
+  -webkit-appearance: none;
+}
+
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 90vw;
+  height: 30px;
+  background: var(--slidetrackcol);
+  border-radius: 15px; /* CAPS ONLY */
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+

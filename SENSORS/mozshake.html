@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>CUSTOM SHAKE_EVENT "MOZ SLIDERS FLASH" // MON 25-APR-22</title>
+
+<link rel="stylesheet" href="./mozshakeslider.css" />
+<link rel="stylesheet" href="./mozshake.css" />
+<script type="text/javascript" src="mozshake.js"></script>
+
+</head>
+<body>
+
+<div id="pagewrapper">
+																	<!-- RANGE-SLIDER ELS -->
+<!-- ________________________________________________________________________________________ -->
+<!-- THRESHOLD -->
+<!-- ASSUMING RANGE FROM -9 TO +9 (IGNORING GRAVITY FRACTION) -->
+<div id="sliderthreshold">
+	<span style="color: var(--slideprocol);">Threshold&nbsp;</span>
+ 	 <input type="text" id="sensitivity" name="sensitivity" size="2" value="15">
+	<br>
+ 	 <input type="range" id="sensval" name="sensval" 
+			min="0" max="18" value="15" step="1" 
+			oninput="setThreshold(sensval.value); sensitivity.value=this.value;">
+</div>
+<!-- TIMEOUT (IN MILL) -->
+<div id="slidertimeout">
+	<span style="color: var(--slideprocol);">Timeout&nbsp;</span>
+ 	 <input type="text" id="timer" name="timer" size="4" value="500">
+	<br>
+ 	 <input type="range" id="timeval" name="timeval" 
+			min="0" max="1000" value="500" step="100" 
+			oninput="setTimeval(timeval.value); timer.value=this.value;">
+</div>
+
+<div id="flashel">
+<p><span style="color: white;">Shake to see a custom action.</span></p>
+</div>
+
+<div id="creditsel"><span style="font-size: 50%;">
+<p>Works on iOS +4.2.1, Android 4.0.3 (default browser), Opera Mobile (Android), BlackBerry PlayBook 2.0 
+<span style="color: black;">Update: Android 10 (Firefox 99.2.0 Chrome 100.0)</span></p>
+<p><a href="https://www.w3.org/TR/orientation-event/#devicemotion">W3C DeviceOrientation Event Specification</a></p>
+<p><a href="https://github.com/alexgibson/shake.js">CREDITS&copy;</a></p></span>
+</div>
+
+
+</div>
+<!-- WRAPPER -->
+
+
+<script type="text/javascript">
+
+/** GLOBALIZATION */
+var myShakeEvent;
+var flashel = document.getElementById("flashel");
+var delay;
+
+window.onload = function() {
+
+//create a new instance of shake.js. // var myShakeEvent
+	myShakeEvent = new Shake({
+		threshold: 12,
+		timeout: 1200
+	});
+// start listening to device motion
+	myShakeEvent.start();
+// register a shake event
+	window.addEventListener('shake', shakeEventDidOccur, false);
+//shake event callback
+	function shakeEventDidOccur () {
+	// __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __  __
+	//put your own code here etc.
+															/** alert('WE HAVE A SHAKE!'); */
+// FLASH
+		flashel.style.backgroundColor = "rgba(255 75 0 / 1)";
+// UNFLASH
+		setTimeout(() => {
+ 		 flashel.style.backgroundColor = "rgba(0 0 0 / .2)";
+		}, delay)
+	} // SHAKE_EVENT
+
+}; // ON_LOAD
+
+
+/** _________________________________________________________________________________________ */
+																		// ADDED SETTINGS
+	function setThreshold(val) {
+		console.log("THRESHOLD", val);
+		myShakeEvent.options.threshold = val;
+	}
+	function setTimeval(val) {
+		delay = val;
+		console.log("TIMEOUT", delay); // CHECK SCOPE
+		myShakeEvent.options.timeout = val;
+	}
+
+/** _________________________________________________________________________________________ */
+																	  	// EXPLORE
+	console.log("myshakeevent", myShakeEvent);
+// 	console.log(myShakeEvent.options);
+// 	console.log(myShakeEvent.options.threshold);
+// 	console.log(myShakeEvent.options.timeout);
+											// REMOTE DEBUGGNG (VIA USB FROM SMARTPHONE)
+	console.log("ondevicemotion", 'ondevicemotion' in window);
+	console.log("permissions", navigator.permissions);
+	console.log("notification", 'Notification' in window);
+
+// MDN // TEST NOTIFICATION
+	var options = {
+  	body: 'Do you like my body?',
+ 	 vibrate: [200, 100, 200]
+	}
+	var n = new Notification('Test notification', options);
+	console.log("...vibrate", n.vibrate) // should log [200,100,200]
+
+
+</script>
+
+</body>
+</html>
