@@ -7,4 +7,4 @@ Various helpers to detect and use sensors on mobile devices (smartphones, really
  
  2-FINGER SWIPE [recognizes](https://www.jenskreitmeyer.de/alpha/beta/SENSORS/multitouch_gestures.html) 2-finger swipes (reserving single finger swipes for other interactions)
 
- All scripts are expanded from snippets/tutorials on [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) or explicit sources
+ All scripts are expanded from snippets/tutorials on [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) or explicitly stated sources
